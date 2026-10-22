@@ -122,6 +122,41 @@ h3 { font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; colo
 .diss .k { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mark); }
 .diss .t { font-family: var(--f-display); font-size: 1.18rem; line-height: 1.4; }
 .diss .s { font-size: 0.88rem; color: var(--muted); }
+.diss.side { padding: 14px 16px; gap: 6px; }
+.diss.side .t { font-size: 1rem; line-height: 1.4; }
+.diss.side .s { font-size: 0.8rem; }
+
+/* two research lines on About */
+.lines { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.line-card { margin: 0; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; }
+.line-card .lk { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mark); }
+.line-card .lt { font-family: var(--f-display); font-size: 1.15rem; line-height: 1.3; font-weight: 500; text-wrap: balance; }
+.line-card figcaption { font-size: 0.78rem; color: var(--muted); line-height: 1.45; }
+.line-card .more { font-size: 0.82rem; font-weight: 500; text-decoration: none; }
+.line-card .more:hover { text-decoration: underline; }
+.cat { display: grid; gap: 8px; }
+.cat-row { display: grid; grid-template-columns: 74px minmax(0, 1fr); align-items: center; gap: 8px; }
+.cat-row .rl { font-family: var(--f-mono); font-size: 0.66rem; color: var(--muted); line-height: 1.3; }
+.cat-dots { display: grid; grid-template-columns: repeat(7, 12px); gap: 5px; }
+.cat-dots span { width: 12px; height: 12px; border-radius: 50%; }
+.cat-dots .m { background: var(--ok); }
+.cat-dots .n { background: var(--mark); }
+.cat-dots .u { border: 1.5px dashed var(--muted); opacity: 0.7; }
+.cat-flow { font-family: var(--f-mono); font-size: 0.64rem; color: var(--accent); padding-left: 82px; }
+.legend i.m { background: var(--ok); border-color: var(--ok); }
+.legend i.u { border: 1.5px dashed var(--muted); background: transparent; }
+.eq { display: grid; gap: 6px; }
+.eq-row { display: grid; grid-template-columns: 58px minmax(0, 1fr); align-items: center; gap: 8px; }
+.eq-row .rl { font-family: var(--f-mono); font-size: 0.66rem; color: var(--muted); }
+.eq-track { position: relative; height: 30px; }
+.eq-track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px dashed var(--line); }
+.eq-dot { position: absolute; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; opacity: 0.85; }
+.eq-row.pre .eq-dot { background: var(--mark); } .eq-row.post .eq-dot { background: var(--accent); }
+.eq-pan { position: absolute; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; border: 2.5px solid var(--fg); background: var(--surface); }
+.eq-axis { position: relative; height: 16px; font-family: var(--f-mono); font-size: 0.62rem; color: var(--muted); }
+.eq-axis span { position: absolute; transform: translateX(-50%); }
+.legend i.ring { background: var(--surface); border: 2px solid var(--fg); }
+@media (max-width: 700px) { .lines { grid-template-columns: minmax(0, 1fr); } }
 
 /* featured papers */
 .featured { display: grid; gap: 20px; }
@@ -281,7 +316,10 @@ h3 { font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; colo
 .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
 .mini { font-size: 0.92rem; }
 .mini dt { font-weight: 600; }
-.mini dd { margin: 0 0 12px; color: var(--muted); }
+.mini { margin: 0; max-width: 65ch; }
+.mini dd { margin: 0 0 20px; color: var(--muted); }
+.bul { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 3px; }
+.bul li::marker { color: var(--accent); }
 
 footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
 
@@ -321,6 +359,11 @@ footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--lin
       School of Education, Iowa State University
     </p>
     <ul class="links" id="links" aria-label="Profiles"></ul>
+    <div class="diss side">
+      <span class="k">Dissertation in progress</span>
+      <span class="t">Locating Society’s Educational Debts at the Level of the Learning Objective. A Cognitive Diagnostic and Intersectional Study of Introductory Physics.</span>
+      <span class="s">Advisor Dr. Ben Van Dusen</span>
+    </div>
 
   </aside>
 
@@ -336,10 +379,26 @@ footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--lin
 
     <section id="about">
       <h2>About</h2>
-      <p class="lede">I am a quantitative education researcher. My work develops cognitive diagnostic assessments from the research-based assessments that introductory physics courses already use, and I use cross-institutional data from LASSO to study equity in student outcomes.</p>
+      <p class="lede">I am a quantitative education researcher. I build cognitive diagnostic assessments from the research-based assessments introductory physics courses already use, and I study equity in student outcomes with cross-institutional data from LASSO.</p>
       <div class="prose">
-        <p>Research-based assessments such as the <a href="https://www.physport.org/assessments/assessment.cfm?A=FCI" target="_blank" rel="noopener">Force Concept Inventory</a> usually give one total score after a course ends. My work turns their items into diagnostic tools using psychometric methods. With evidence-centered design, a Q-matrix that links each item to the learning objectives it tests, and cognitive diagnostic models, I estimate which learning objectives each student has mastered. This work is the foundation of the Mechanics Cognitive Diagnostic, an adaptive test that gives instructors this feedback during the semester.</p>
-        <p>My second line of research asks who our courses serve well. I ground this work in QuantCrit, which brings critical race theory to quantitative research and asks how data categories and modeling choices can hide or reveal inequity. Using student outcome data from <a href="https://lassoeducation.org/" target="_blank" rel="noopener">LASSO</a>, a national platform that hosts research-based assessments for college STEM courses, I apply intersectional quantitative methods such as MAIHDA and Bayesian hierarchical models to locate gaps in outcomes across student groups. I frame these gaps as educational debts that society owes to students.</p>
+        <p>Assessments like the <a href="https://www.physport.org/assessments/assessment.cfm?A=FCI" target="_blank" rel="noopener">Force Concept Inventory</a> usually report one total score after a course ends. Using evidence-centered design and cognitive diagnostic models, I turn their items into tools that show which learning objectives each student has mastered during the semester. This work underlies the Mechanics Cognitive Diagnostic.</p>
+        <p>Guided by QuantCrit, I use intersectional methods such as hierarchical models with <a href="https://lassoeducation.org/" target="_blank" rel="noopener">LASSO</a> data to locate differences in outcomes across student groups. I frame these differences as educational debts society owes to students (<a href="https://doi.org/10.3102/0013189X035007003" target="_blank" rel="noopener">Ladson-Billings, 2006</a>).</p>
+      </div>
+      <div class="lines">
+        <figure class="line-card">
+          <span class="lk">Assessment</span>
+          <span class="lt">Cognitive diagnostic adaptive testing</span>
+          <div id="catViz"></div>
+          <figcaption>Illustrative. The MCD chooses each next item to sharpen the least certain learning objectives, so a student's mastery profile fills in as the test goes.</figcaption>
+          <a class="more" href="#publications" data-view="publications">MCD papers →</a>
+        </figure>
+        <figure class="line-card">
+          <span class="lk">Equity</span>
+          <span class="lt">One average hides 19 different stories</span>
+          <div id="eqViz"></div>
+          <figcaption>Predicted FCI and FMCE scores for 19 Asian subgroups, compared with a single pan-Asian estimate. Data from the MAIHDA paper.</figcaption>
+          <a class="more" href="#publications" data-view="publications">MAIHDA paper →</a>
+        </figure>
       </div>
       <ul class="tags">
         <li>Cognitive diagnostic models</li>
@@ -351,11 +410,6 @@ footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--lin
         <li>Educational debts</li>
         <li>Physics education research</li>
       </ul>
-      <div class="diss">
-        <span class="k">Dissertation in progress</span>
-        <span class="t">Locating Society’s Educational Debts at the Level of the Learning Objective. A Cognitive Diagnostic and Intersectional Study of Introductory Physics.</span>
-        <span class="s">Advisor Dr. Ben Van Dusen</span>
-      </div>
       <h3>Education</h3>
       <ul class="list">
         <li class="item"><div class="yr">2023–</div><div><div class="title">Ph.D. in Education, Science Education</div><div class="meta">Iowa State University · Ames, Iowa</div></div></li>
@@ -392,18 +446,14 @@ footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--lin
 
     <section id="service">
       <h2>Service &amp; memberships</h2>
-      <div class="two">
+      <div>
         <dl class="mini">
           <dt>Peer review</dt>
-          <dd>Physics Education Research Conference (PERC), 2024 to present</dd>
+          <dd><ul class="bul"><li>Physics Education Research Conference (PERC), 2024 to present</li></ul></dd>
           <dt>Memberships</dt>
-          <dd>American Educational Research Association (AERA)<br>American Association of Physics Teachers (AAPT)<br>Physics Education Research Conference (PERC)<br>Preparing Future Faculty Program, Iowa State University</dd>
-        </dl>
-        <dl class="mini">
+          <dd><ul class="bul"><li>American Educational Research Association (AERA)</li><li>American Association of Physics Teachers (AAPT)</li><li>Physics Education Research Conference (PERC)</li><li>Preparing Future Faculty Program, Iowa State University</li></ul></dd>
           <dt>Tools</dt>
-          <dd>R (RStudio, Positron), LaTeX, GitHub, LASSO, Microsoft Azure, Nova high-performance computing (HPC) cluster at Iowa State</dd>
-          <dt>Languages</dt>
-          <dd>Vietnamese (native), English (fluent)</dd>
+          <dd><ul class="bul"><li>R (RStudio, Positron)</li><li>LaTeX</li><li>GitHub</li><li>LASSO</li><li>Microsoft Azure</li><li>Nova high-performance computing (HPC) cluster at Iowa State</li></ul></dd>
         </dl>
       </div>
     </section>
@@ -429,8 +479,6 @@ const SITE = {
   links: [
     { label: "Google Scholar", short: "Scholar", url: "https://scholar.google.com/citations?user=L9RdQr0AAAAJ&hl=en",
       icon: "scholar", stats: [{ n: 24, l: "citations" }] },  // add h-index like { n: 3, l: "h-index" }
-    { label: "ResearchGate", short: "RG", url: "https://www.researchgate.net/profile/Vy-Le-154", icon: "papers",
-      stats: [{ n: 21, l: "citations" }, { n: 544, l: "reads" }] },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/phuong-vyle", icon: "briefcase" },
     { label: "LASSO platform", short: "LASSO", url: "https://lassoeducation.org/contact/", icon: "chart" }
   ],
@@ -615,6 +663,38 @@ $("links").innerHTML = SITE.links.map(l =>
   `<li><a href="${esc(l.url)}" target="_blank" rel="noopener" title="${esc(l.label)}" aria-label="${esc(l.label)} (opens in a new tab)">
      <span class="ic">${l.logo ? `<img class="logo" src="${esc(l.logo)}" alt="">` : (ICONS[l.icon] || "")}</span>
      <span class="nm">${esc(l.short || l.label)}</span></a></li>`).join("");
+
+/* ---- About page visuals ---- */
+(function () {
+  // Illustrative mastery states for 14 learning objectives: m = mastered, n = not yet, u = still uncertain
+  const early = "muuumuunuuuumu", late = "mmnmmnmnmmmnmm";
+  const dots = s => `<div class="cat-dots">${[...s].map(c => `<span class="${c}"></span>`).join("")}</div>`;
+  $("catViz").innerHTML = `<div class="cat" role="img" aria-label="Illustration of a mastery profile across 14 learning objectives filling in as the adaptive test continues">
+    <div class="cat-row"><span class="rl">Item bank</span><div class="chips"><span>FCI</span><span>FMCE</span><span>EMCS</span></div></div>
+    <div class="cat-flow">↓ adaptive item selection</div>
+    <div class="cat-row"><span class="rl">After a few items</span>${dots(early)}</div>
+    <div class="cat-row"><span class="rl">End of test</span>${dots(late)}</div>
+  </div>
+  <div class="legend"><span><i class="m"></i>mastered</span><span><i class="pre"></i>not yet</span><span><i class="u"></i>uncertain</span></div>`;
+
+  const mf = SITE.featured.find(x => x.figure === "maihda");
+  if (!mf) { $("eqViz").closest(".line-card").hidden = true; return; }
+  const lo = 32, hi = 68, pct = v => ((v - lo) / (hi - lo) * 100).toFixed(2) + "%";
+  const pan = mf.groups[0], subs = mf.groups.slice(1);
+  const row = (k, label) => `<div class="eq-row ${k}"><span class="rl">${label}</span><div class="eq-track">
+      ${subs.map(g => `<span class="eq-dot" style="left:${pct(g[k][0])}" title="${esc(g.g)} ${g[k][0]}%"></span>`).join("")}
+      <span class="eq-pan" style="left:${pct(pan[k][0])}" title="Pan-Asian ${pan[k][0]}%"></span></div></div>`;
+  $("eqViz").innerHTML = `<div class="eq" role="img" aria-label="Subgroup predicted means spread from 35 to 51 percent at pretest and 50 to 65 percent at posttest, while the single pan-Asian estimate sits at 43 and 58 percent">
+    ${row("pre", "Pretest")}${row("post", "Posttest")}
+    <div class="eq-row"><span></span><div class="eq-axis">${[35, 45, 55, 65].map(t => `<span style="left:${pct(t)}">${t}%</span>`).join("")}</div></div>
+  </div>
+  <div class="legend"><span><i class="pre"></i><i class="on" style="margin-left:-2px"></i>19 subgroups</span><span><i class="ring"></i>pan-Asian estimate</span></div>`;
+})();
+document.querySelectorAll(".more[data-view]").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault(); const v = a.dataset.view;
+  try { history.pushState(null, "", "#" + v); } catch (err) {}
+  show(v, true);
+}));
 
 /* ---- pages: one section shown at a time, chosen by the #name in the address ---- */
 const VIEWS = [...document.querySelectorAll("main > section")].map(s => s.id);
