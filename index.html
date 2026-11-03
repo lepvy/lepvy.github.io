@@ -327,6 +327,13 @@ h3 { font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; colo
 .mini dd { margin: 0 0 20px; color: var(--muted); }
 .bul { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 3px; }
 .bul li::marker { color: var(--accent); }
+.item .bul { margin-top: 8px; font-size: 0.9rem; color: var(--muted); }
+.note-line { margin: 0; font-size: 0.88rem; color: var(--muted); }
+.exp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.exp-item { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.exp-t { font-weight: 600; }
+.exp-d { font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+@media (max-width: 700px) { .exp { grid-template-columns: minmax(0, 1fr); } }
 
 footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
 
@@ -419,7 +426,7 @@ footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--lin
       </ul>
       <h3>Education</h3>
       <ul class="list">
-        <li class="item"><div class="yr">2023–</div><div><div class="title">Ph.D. in Education, Science Education</div><div class="meta">Iowa State University · Ames, Iowa</div></div></li>
+        <li class="item"><div class="yr">2023–27</div><div><div class="title">Ph.D. in Education, Science Education</div><div class="meta">Iowa State University · Ames, Iowa · Expected July 2027</div></div></li>
         <li class="item"><div class="yr">2019–21</div><div><div class="title">M.S. in Education, Interdisciplinary Educational Studies</div><div class="meta">University of Dayton · Dayton, Ohio</div></div></li>
         <li class="item"><div class="yr">2014–18</div><div><div class="title">B.S. in Physics</div><div class="meta">Ho Chi Minh City University of Education · Ho Chi Minh City, Vietnam</div></div></li>
       </ul>
@@ -442,25 +449,39 @@ footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--lin
     </section>
 
     <section id="research">
-      <h2>Research projects</h2>
+      <h2>Research</h2>
+      <h3>Areas of expertise</h3>
+      <div class="exp" id="expertise"></div>
+      <h3>Research projects</h3>
       <ul class="list" id="projects"></ul>
     </section>
 
     <section id="teaching">
       <h2>Teaching</h2>
       <ul class="list" id="teach"></ul>
+      <h3>Teaching interests</h3>
+      <ul class="bul" id="tInterests"></ul>
+      <p class="note-line">Prepared to teach undergraduate and graduate courses in person, hybrid, and online.</p>
+      <h3>Mentoring</h3>
+      <ul class="list" id="mentoring"></ul>
     </section>
 
     <section id="service">
-      <h2>Service &amp; memberships</h2>
+      <h2>Service &amp; skills</h2>
       <div>
         <dl class="mini">
           <dt>Peer review</dt>
-          <dd><ul class="bul"><li>Physics Education Research Conference (PERC), 2024 to present</li></ul></dd>
+          <dd><ul class="bul"><li>Physics Education Research Conference (PERC) Proceedings, 2024 to present</li><li>The Physics Teacher</li></ul></dd>
+          <dt>Platform support</dt>
+          <dd><ul class="bul"><li>LASSO, 2023 to present. Review and approve instructor accounts and support instructors adopting adaptive assessments</li></ul></dd>
           <dt>Memberships</dt>
-          <dd><ul class="bul"><li>American Educational Research Association (AERA)</li><li>American Association of Physics Teachers (AAPT)</li><li>Physics Education Research Conference (PERC)</li><li>Preparing Future Faculty Program, Iowa State University</li></ul></dd>
+          <dd><ul class="bul"><li>American Educational Research Association (AERA)</li><li>American Association of Physics Teachers (AAPT)</li><li>Physics Education Research Conference (PERC)</li></ul></dd>
+          <dt>Professional development</dt>
+          <dd><ul class="bul"><li>Preparing Future Faculty (PFF) Program, Iowa State University, 2025 to present</li><li>Grant Writing Seminar, Center for Communication Excellence, Iowa State University, 2026</li></ul></dd>
+          <dt>Methods</dt>
+          <dd><ul class="bul"><li>Item response theory and cognitive diagnostic models (DINA, G-DINA)</li><li>Computerized adaptive testing and evidence-centered design</li><li>Bayesian multilevel modeling and MAIHDA</li><li>Bayesian multiple imputation (Blimp) and multiple imputation by chained equations (mice)</li></ul></dd>
           <dt>Tools</dt>
-          <dd><ul class="bul"><li>R (RStudio, Positron)</li><li>LaTeX</li><li>GitHub</li><li>LASSO</li><li>Microsoft Azure</li><li>Nova high-performance computing (HPC) cluster at Iowa State</li></ul></dd>
+          <dd><ul class="bul"><li>R (RStudio, Positron) with mirt, brms, mice, and tidyverse</li><li>LaTeX, Google Workspace, Microsoft Office</li><li>LASSO, GitHub, Microsoft Azure</li><li>Nova high-performance computing (HPC) cluster, Iowa State University</li></ul></dd>
         </dl>
       </div>
     </section>
@@ -477,7 +498,7 @@ const MAIHDA_MODEL_IMG = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABRQAAAOw
    To add a paper, talk, or award, copy an existing entry and change it.
    ===================================================================== */
 const SITE = {
-  updated: "October 2026",
+  updated: "November 2026",
 
   // Profile buttons. To use your own logo image on a button, upload the image file to
   // GitHub next to index.html and add logo: "file-name.png" to that button.
@@ -557,6 +578,10 @@ const SITE = {
       authors: "Le, V., Angell, G., Nissen, J. M., & Van Dusen, B.",
       venue: "Physical Review Physics Education Research",
       links: [{ label: "arXiv", url: "https://arxiv.org/abs/2509.19049" }] },
+    { year: 2026, status: "under review",
+      title: "Bridging Policy and Practice. A Cross-National Review of Special Education",
+      authors: "Wu, S., Lee, J., Wafula, Z., Le, V., Dilek, M., Haines, S., Namodi, J., Eathington, L., Alqahtani, N., Fillipova, L., & Prince, A. T.",
+      venue: "Journal of Research in Special Educational Needs", links: [] },
     { year: 2026, status: "major revision",
       title: "How We Know What Students Know. Rethinking College STEM Assessments with CD-CATs",
       authors: "Chang, H. H., Huang, J., Zhang, Y., Wang, X., Le, V., Mehrabi, A., Salazar, A., Morphew, J. W., Nissen, J. M., & Van Dusen, B.",
@@ -605,8 +630,8 @@ const SITE = {
       title: "Understanding Heterogeneity in Outcomes Across Asian Student Groups in the Introductory Physics Courses" },
     { date: "2026-02-20", kind: "Poster", event: "ISU GPSS 14th Annual Meeting", place: "Ames, IA",
       title: "Challenging Data Aggregation Practices. A MAIHDA Study of Asian Student Outcomes in Intro Physics" },
-    { date: "2025-10-28", kind: "Poster", event: "AI in Measurement in Education Meeting", place: "Pittsburgh, PA",
-      title: "Scaling Cognitive Diagnostic Across STEM" },
+    { date: "2025-10-28", kind: "Poster", event: "Artificial Intelligence in Measurement and Education Conference", place: "Pittsburgh, PA",
+      title: "Scaling Cognitive Diagnostics Across STEM" },
     { date: "2025-09-12", kind: "Poster", event: "ISU–NISS Conference on AI and Statistics", place: "Ames, IA",
       title: "Cognitive Diagnostic Model Across STEM Domains" },
     { date: "2025-08-07", links: [{ label: "poster PDF", url: "https://www.per-central.org/perc/2025/posters/2025_AAPT_DINA_Poster.pptx.pdf" }], kind: "Poster", event: "PERC", place: "Boston, MA",
@@ -633,26 +658,59 @@ const SITE = {
 
   projects: [
     { years: "2026–", title: "Building Capacity in STEM Education Research",
-      meta: "PI Dr. Jayson M. Nissen, Department of Physics, Montana State University",
-      text: "Developing Bayesian hierarchical models, Bayesian multiple imputation, and theory-informed priors to improve the rigor and precision of multilevel STEM education research." },
+      meta: "Graduate Research Assistant · PI Dr. Jayson M. Nissen, Department of Physics, Montana State University · NSF Award #2526720",
+      text: "Developing and applying Bayesian hierarchical modeling and Bayesian multiple imputation to improve the rigor, accuracy, and precision of multilevel STEM education research." },
     { years: "2023–26", title: "Individualizing Instruction and Improving Research Using Adaptive Testing",
-      meta: "PI Dr. Ben Van Dusen, School of Education, Iowa State University",
-      text: "Applied cognitive diagnostic models to estimate student mastery profiles, reconciled LASSO data across platform versions, and tested new adaptive assessments on the LASSO platform." },
+      meta: "Graduate Research Assistant · PI Dr. Ben Van Dusen, School of Education, Iowa State University · NSF Award #2141847",
+      text: "Contributed to the design and validation of cognitive diagnostic computerized adaptive tests for introductory physics, delivered through [LASSO](https://lassoeducation.org/), in a collaboration across Iowa State University, Montana State University, and Purdue University.",
+      bullets: [
+        "Defined student models using evidence-centered design and developed item banks for the mechanics and electricity and magnetism cognitive diagnostics",
+        "Constructed and validated Q-matrices for three research-based assessments, including the Force Concept Inventory, and applied the DINA model to multilevel LASSO data from more than 60,000 students",
+        "Generated the item metadata that drives adaptive item selection",
+        "Cleaned, validated, and reconciled LASSO student data across platform versions",
+        "Created test cases for the LASSO platform and tested new assessments for functionality and data accuracy"
+      ] },
     { years: "2020", title: "The Effects of Extra Credit on Academic Performance in College Students",
-      meta: "Advisor Dr. Kathryn Kinnucan-Welsch, University of Dayton",
-      text: "Mixed-methods action study using surveys and interviews." }
+      meta: "Advisor Dr. Kathryn Kinnucan-Welsch, Department of Teacher Education, University of Dayton",
+      text: "Mixed-methods action study using surveys and interviews, with coding, analysis, and visualization of results." }
+  ],
+
+  // Areas of expertise, shown at the top of the Research page
+  expertise: [
+    { t: "Educational measurement and assessment", d: "Cognitive diagnostic models (DINA, G-DINA), item response theory, CD-CAT, evidence-centered design, Q-matrix construction and validation, item bank development" },
+    { t: "Quantitative methods and data analytics", d: "Bayesian multilevel modeling, MAIHDA, Bayesian multiple imputation, QuantCrit and intersectional methods, large-scale datasets of 60,000+ students, high-performance computing" },
+    { t: "Physics and STEM education research", d: "Research-based assessments in introductory physics, learning objectives in mechanics, equity and educational debt in STEM courses, multi-institution LASSO data" },
+    { t: "Assessment technology and AI", d: "Adaptive diagnostic assessments on an online platform, diagnostic feedback for instructors, emerging work on AI-supported item generation and item parameter prediction" }
   ],
 
   teaching: [
     { years: "2025–", title: "Teaching Assistant, Science Teaching Methods I & II",
-      meta: "EDUC 4180/518 and 4190/519 · School of Education, Iowa State University",
-      text: "Design mini-lectures and activities that show future K–12 science teachers how to apply the [Next Generation Science Standards (NGSS)](https://www.nextgenscience.org/) in their teaching." },
+      meta: "EDUC 4180/518 and EDUC 4190/519 · School of Education, Iowa State University",
+      text: "Undergraduate and graduate (cross-listed) science teacher preparation courses.",
+      bullets: [
+        "Designed mini-lectures and activities that show future science teachers how to apply K–12 standards aligned with the [Next Generation Science Standards (NGSS)](https://www.nextgenscience.org/)",
+        "Supported preservice teachers in designing NGSS-aligned, inquiry-based lessons and in using evidence of student thinking to revise lesson plans"
+      ] },
     { years: "2021–22", title: "Teaching Assistant, General & University Physics I–II with Lab",
-      meta: "PHY 232–235, PHY 262–265, ENR 202 · Tennessee Wesleyan University",
-      text: "Developed and graded exams, led recitations, and prepared labs for classes of 12 to 20 students." },
-    { years: "2017", title: "Physics Teaching Intern",
-      meta: "Hoa Sen High School, Ho Chi Minh City",
-      text: "Taught physics and guided 10th-grade problem-based learning projects, including a mini hydro-power STEM design project." }
+      meta: "PHY 232–235, PHY 262–265, ENR 202 Dynamics · Department of Natural Sciences, Tennessee Wesleyan University",
+      text: "Developed and graded exams and assignments, held recitation hours, prepared class materials, and set up laboratory experiments for classes of 12 to 20 students." },
+    { years: "2017", title: "Physics Teacher (Internship)",
+      meta: "Hoa Sen High School, Ho Chi Minh City, Vietnam",
+      text: "Taught high school physics and guided 10th-grade problem-based learning projects, including the “Mini Hydro-power Design” STEM project curriculum." }
+  ],
+
+  teachingInterests: [
+    "Science teaching methods and science assessment",
+    "Quantitative research methods and applied statistics in R (regression, multilevel and Bayesian modeling, missing data)",
+    "Educational measurement and assessment (item response theory, cognitive diagnostic models, assessment design)",
+    "Data analytics for educational research, including large-scale and institutional datasets",
+    "Introductory physics (algebra- and calculus-based) with laboratory"
+  ],
+
+  mentoring: [
+    { years: "2025", title: "Research Mentor, undergraduate student",
+      meta: "Equity-focused quantitative project",
+      text: "Guided data cleaning, coding, and analysis in R." }
   ]
 };
 /* ===================================================================== */
@@ -882,9 +940,12 @@ renderPres();
 const linkify = (t) => esc(t).replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
 const simple = (x) => `<li class="item"><div class="yr">${esc(x.years)}</div><div>
   <div class="title">${esc(x.title)}</div><div class="meta">${esc(x.meta)}</div>
-  <div class="meta" style="color:var(--fg);margin-top:6px">${linkify(x.text)}</div></div></li>`;
+  <div class="meta" style="color:var(--fg);margin-top:6px">${linkify(x.text)}</div>${x.bullets ? `<ul class="bul">${x.bullets.map(b => `<li>${linkify(b)}</li>`).join("")}</ul>` : ""}</div></li>`;
 $("projects").innerHTML = SITE.projects.map(simple).join("");
 $("teach").innerHTML = SITE.teaching.map(simple).join("");
+$("tInterests").innerHTML = SITE.teachingInterests.map(t => `<li>${esc(t)}</li>`).join("");
+$("mentoring").innerHTML = SITE.mentoring.map(simple).join("");
+$("expertise").innerHTML = SITE.expertise.map(x => `<div class="exp-item"><div class="exp-t">${esc(x.t)}</div><div class="exp-d">${esc(x.d)}</div></div>`).join("");
 
 $("updated").textContent = SITE.updated;
 
